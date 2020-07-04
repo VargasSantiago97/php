@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Plantilla HTML {{nombre_persona}}</title>
+</head>
+<body>
+
+	{% include "barra.html" %}
+
+	<h1>
+		Probando plantilla {{nombre_persona}}
+	</h1>
+		{#ESTE ES UN COMENTARIO, if item == 2 #}
+		{% if lista %}
+			<h2>
+				Elementos:
+			</h2>
+				<ul>
+					{% for item in lista %}
+						<li>{{item}}</li>
+					{% endfor %}
+				</ul>
+
+		{% else %}
+			<h2>
+				No hay elementos que mostrar
+			</h2>
+		{% endif %}
+
+		
+
+</body>
+</html>
