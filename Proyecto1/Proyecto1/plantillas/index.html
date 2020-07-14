@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pagina Inicio</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		
+		#contenedor{
+			width: 90%;
+			height: 1000px;
+			background: #888888;
+			margin: 0.5em auto;
+			padding: 0.5em;
+			color: : #888888;
+		}
+
+		#headser{
+			width: 96%;
+			height: 10%;
+			background: #880008;
+			margin: 0.5em auto;
+			padding: 0.5em;
+			color: : #888888;
+		}
+
+
+		#contenido{
+			width: 96%;
+			height: 84%;
+			background: #880008;
+			margin: 0.5em auto;
+			padding: 0.5em;
+			color: : #888888;
+		}
+
+
+		#nav{
+			width: 20%;
+			height: 96%;
+			background: #888888;
+			margin: 0.5em;
+			padding: 0.5em;
+			color: : #888888;
+			float: left;
+			position: fixed;
+		}
+
+
+		#todo{
+			width: 73%;
+			height: 96%;
+			background: #888888;
+			margin: 0.5em;
+			padding: 0.5em;
+			color: : #888888;
+			float: right;
+			border-radius: 10px;
+		}
+		header {
+			background: rgba(0,0,0,0.9);
+			width: 100%;
+			position: fixed;
+			z-index: 100;
+			border-radius: 10px;
+		}
+		p {
+			padding: 2em;
+		}
+		.tarjetita {
+			width: 300px;
+			height: 80px;
+			background: #FFFFFF;
+			margin: 0.5em;
+			padding: 0.5em;
+			color: : #888888;
+			float: left;
+			border-radius: 10px;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<div>
+			{% include "barra.html" %}
+		</div>
+	</nav>
+	<h1>Pagina de Prueba</h1>
+	<div id="contenedor">
+		<div id="headser">header</div>
+		<div id="contenido">
+			<div id="nav">nav</div>
+			<div id="todo">
+				{% for info in informacion %}
+					<div class="tarjetita">
+						<h2>{{info.1}}</h2>
+						<h2>{{info}}</h2>
+						<hr>
+						<h2>{{info}}</h2>
+					</div>
+					{% endfor %}
+					<div class="card" style="width: 18rem;">
+						<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARMAAAC3CAMAAAAGjUrGAAAAM1BMVEXMzMyVlZWTk5PLy8uXl5fPz8+5ubnHx8ednZ2ampq1tbXDw8O8vLyioqLAwMCtra2oqKhNt9DKAAAEb0lEQVR4nO3Y0ZajKBCAYQUERRTf/2m3qlBj0jPb2Tl7ts3Z/7uYtNEhUkJR2HUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgP+FQbwcv57/B039Sy39rBRrzevjeM01F38eej09v9WSL7XWmM7jOT8d+iItr/5X//NmyjL1fRjzfq8+L0EO69GVtOnpJb7RlbSNfd+P2x5fX6SlftqOeKY8hssP3dgsXe6ddDu24zi1w9pGud/a6fH7kXJcGpZ27aoREsveUg12esp3nz/DqHcZF+mKjYxZOrYU+WdsTzvKo61RLqrpb9uRlnII/RKzxLTqUPBVGskSCNeirSFaVvmh5b2J+HNW109yz2XsnT6/IfYhrN0g3dv0cWrI5DnHENx3PZn1Up17rg2q5ELIwyDhDdZSlZZ9l6Tluw+UlK3zOu7tUx7ulrQD/aIDQ2ZWiEM3y+P9Lg/I3JjkkqHIf9GYRCfDQoIshzrkkvxCPX/g3oZB+6qPU+f90XkZPmPRYROsg9aTMyY+if3jEqhhtummY0r/2Frnk8REB4ZMHVd0FbNQfYK0tHGySjYo+oUNfBkvoZ90SmXJDcfTHTbn3Dh0a5DPLzNKwhcmDaPmoMFmX9CW4xScjTzJX+W/7Nof8l4yY9A7XUMb6T7YyjNsoR8tJmHPwZ3FJIQwS+KQ/PnlkUdNRam1YBlqsRF4tjCHc4m7sznn0Sa75Fp5ihaTyZ7yMaV0DvVnTPI2hVB1aC1fUoOuLhZd34cWEwmrxURa3jNU/wExKVI17IlP/rRFeB/5wz6lzpFvfCdTatTwlde8K5k0tGXbuzAdMRmHx+yT5cnFmy88nQbC9XvieysmLXEuex3yREPS6o8Pj0kqUapwu+M3Y6LFxlnWXb7OfbD1qvv4mHSPmu3MsdPvc6zykmVDfW1llfw65eOKLzl2+qAcqySZTsN7647SFfbLxkUDeQbqo9cd65huVlyrT5ytGo/6JLzWJ6q4EF43Lm3Dc6SY39YnMqfuXp/MNQ6PmGgFrnXsvOcVrcxTq2OvCXXQESFXPrUkibct5M1e+qbRdged7P6smNE69uabQL3FrjsL1mO/s+37ndT2O9qhyxsULVfG+LLDlSZaRbIrbb9zzJljv7P9arm6l1VfFXjbjeSjOCuWQu0FimaD0Xe5bXsOMi9azXbdF8qA0EvtvB0H7b3XBqyl1sa6p5k7005PVd+t2apgj3PMj/cnRfqwWZn76P6qWUZqe73yMXokYfRbzMaKNq1caz02ULa9XOInvD+RaeHsbdi0LwalvR0L+xDwtZ2+7GV1v6NVi71HO6sWmzpy7Hq374Lm1rI7NtQyUK4/dGdrlXkTluNOvdRvcnjOilT1Tdx2ebVs++JVz8ine9otH1oAV32V+3izq2963Xtvdn+cX2Msl/E8lxjXl9NPWz35wjo2x/2P89vDfnnSli4hkJbL7ScOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPyxvwCGcia2SdQndQAAAABJRU5ErkJggg==" class="card-img-top" alt="...">
+						<div class="card-body">
+							<h5 class="card-title">Card title</h5>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							<a href="#" class="btn btn-primary">Go somewhere</a>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+
+</body>
+</html>
+

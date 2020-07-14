@@ -3,7 +3,6 @@ import datetime
 from django.template import Template, Context, loader
 
 
-
 import sqlite3
 from sqlite3 import Error
 
@@ -163,15 +162,85 @@ def htmlCondicionales(request):
 		lista.append("val" + str(i+4))
 
 
-	docRender = doc_externo.render({"nombre_persona" : "Juan", "lista":lista})
+	docRender = doc_externo.render({"nombre_persona" : "Juan", "lista":lista, "variador":0, "seleccion":3})
 
 	return HttpResponse(docRender)
-
 
 
 def CursoC(request):
 	doc_externo = loader.get_template("CursoC.html")
 
 	docRender = doc_externo.render({"nombre_persona" : "Juan"})
+
+	return HttpResponse(docRender)
+
+
+def busqueda_productos(request):
+	doc_externo = loader.get_template("busqueda.html")
+
+	docRender = doc_externo.render()
+
+	return HttpResponse(docRender)
+
+
+def buscar(request):
+
+	productor = request.GET["prd"]
+
+	docEnviar = """
+	<html>
+		<head>
+			<title>Productores</title>
+		</head>
+	<body>
+		<h1>
+			Listado de Productores
+		</h1>
+	"""
+
+	con = sql_connection()
+	condiciones = " WHERE estado = 'activo' AND nombre LIKE '%" + str(productor) + "%'"
+	rows = actualizar_db(con, "productores", condiciones)
+
+	for row in rows:
+		docEnviar = docEnviar + """
+		<a href="/mostrarProductor/%s">
+			<h3>%s</h3>
+		</a>
+		<p>Razon Social: %s<br>Cuit: %s</p>
+		<hr>
+		<br>
+		""" % (str(row[0]), str(row[1]), str(row[2]), str(row[3]))
+
+	docEnviar = docEnviar + """
+	</body>
+	</html>
+	"""
+
+	return HttpResponse(docEnviar)
+
+
+def seleccion(request, selec):
+
+	doc_externo = loader.get_template("plantilla2.html")
+
+	lista = ["val1", "val2", "val3"]
+	for i in range(0, 7):
+		lista.append("val" + str(i+4))
+
+
+	docRender = doc_externo.render({"nombre_persona" : "Juan", "lista":lista, "variador":0, "seleccion":selec})
+
+	return HttpResponse(docRender)
+
+
+def index(request):
+	doc_externo = loader.get_template("index.html")
+
+	lista = {"1":{1: "111", "2":"222", "3":"333"},
+			"4":{1: "111", "2":"222", "3":"333"},
+			"33":{1: "111", "2":"222", "3":"333"}}
+
+	docRender = doc_externo.render({"informacion":lista})
 
 	return HttpResponse(docRender)

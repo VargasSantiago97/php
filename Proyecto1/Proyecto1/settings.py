@@ -25,7 +25,10 @@ SECRET_KEY = 'iu%p6l+!g7&vt^z)lpkwg4gizxito9848*!v730r2d&=zplmh0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ["192.168.50.108", "192.168.50.104"]
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["10.158.0.2", "127.0.0.1"]
+
 
 
 # Application definition
@@ -54,7 +57,7 @@ ROOT_URLCONF = 'Proyecto1.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["C:/Users/Santiago/Desktop/ProyectosDjango/Proyecto1/Proyecto1/plantillas"],
+        'DIRS': ["Proyecto1/plantillas"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

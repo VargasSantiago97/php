@@ -5,10 +5,13 @@
 </head>
 <style>
 	#barra{
-		margin: 0;
-		padding: 0;
+		margin: 0 auto;
+		padding: 10px;
 		list-style: none;
 		text-transform: uppercase;
+		background-color: #121214;
+		font-size: 30px;
+		color: #FFFFFF;
 	}
 
 	#barra li{
@@ -17,11 +20,33 @@
 	}
 </style>
 <body>
-	<ul id = "barra">
-		<li>Home</li>
-		<li>Servicios</li>
-		<li>Home2</li>
-		<li>Home3</li>
-	</ul>
+
+	{% if variador == 1 %}
+	<h1>
+		Variador activado
+	</h1>
+	{% else %}
+	<h1>
+		Variador desactivado
+	</h1>
+	{% endif %}
+
+	<header>
+
+		<ul class="nav justify-content-center">
+			<li class="nav-item">
+				<a class="nav-link active" href="#">Active</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Link</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Link</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+			</li>
+		</ul>
+	</header>
 </body>
 </html>

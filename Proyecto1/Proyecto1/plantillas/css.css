@@ -1,0 +1,13 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+#contenedor{
+	width: 1200px;
+	height: 1000px;
+	background: #888888;
+	margin: 0.5em auto;
+	padding: 0.5em;
+	color: : #888888;
+}
