@@ -8,7 +8,7 @@ from sqlite3 import Error
 
 def sql_connection():
 	try:
-		con = sqlite3.connect("C:/Users/Santiago/Desktop/30-06-20/V1/librerias/database/iltanohacienda.db")
+		con = sqlite3.connect("/home/vargas/Escritorio/01-07-20/30-06-20/librerias/database/iltanohacienda.db")
 		return con
 	except Error:
 		messagebox.showerror("ERROR", "Error conectando a la base de datos")
